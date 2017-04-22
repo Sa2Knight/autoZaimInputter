@@ -2,3 +2,4 @@
 .bundle
 bundle/*
 keys.json
+template.json
