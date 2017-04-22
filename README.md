@@ -18,6 +18,10 @@ ZaimAPIを用いて、収入/支出の自動入力を行うCUIツール
 ```bash
 git clone git@github.com:Sa2Knight/autoZaimInputter.git
 ```
+必要なライブラリをインストール
+```bash
+bundle install --path bundle/vendor
+```
 プロジェクトルートに、ZaimAPI用のアクセスキー及びアクセストークンをJSONで記載した、secret.jsonを作成する。以下はsecret.jsonの例
 ```json
 {
