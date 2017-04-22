@@ -21,4 +21,9 @@ class Util
     self.get_json(TEMPLATEFILE)
   end
 
+  # 本日の日時を文字列で取得
+  def self.get_todays_string
+    Date.today.strftime('%Y-%m-%d')
+  end
+
 end

@@ -1,3 +1,4 @@
-require_relative "util"
+require_relative "zaim"
 
-p Util.get_api_key
+zaim = Zaim.new
+zaim.create_by_template

@@ -20,6 +20,25 @@ class Zaim
     @access_token = OAuth::AccessToken.new(@consumer, api_key["access_token"], api_key["access_token_secret"])
   end
 
+  # 固定収支をZaimに登録する
+  def create_by_template
+    template = Util.get_template
+    template["income"].each  { |income|  self.create_income(income)  }
+    template["payment"].each { |payment| self.create_payment(payment) }
+  end
+
+  # 収入を登録する
+  def create_income(income)
+    income["date"] = Util.get_todays_string
+    self.post(API_INCOME, income)
+  end
+
+  # 支出を登録する
+  def create_payment(payment)
+    payment["date"] = Util.get_todays_string
+    self.post(API_PAYMENT, payment)
+  end
+
   # ZaimAPIにPOSTする
   def post(url, params)
     @access_token.post(url, params)
