@@ -3,7 +3,9 @@ require 'json'
 require_relative "util"
 class Zaim
 
-  API_URL = 'https://api.zaim.net/v2/'
+  API_BASE = 'https://api.zaim.net/v2/'
+  API_PAYMENT = API_BASE + 'home/money/payment'
+  API_INCOME  = API_BASE + 'home/money/income'
 
   # ZaimAPIへのアクセストークンを生成する
   def initialize
@@ -16,6 +18,11 @@ class Zaim
     }
     @consumer = OAuth::Consumer.new(api_key["key"], api_key["secret"], oauth_params)
     @access_token = OAuth::AccessToken.new(@consumer, api_key["access_token"], api_key["access_token_secret"])
+  end
+
+  # ZaimAPIにPOSTする
+  def post(url, params)
+    @access_token.post(url, params)
   end
 
 end
